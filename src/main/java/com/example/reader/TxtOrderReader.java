@@ -1,4 +1,6 @@
-package com.example;
+package com.example.reader;
+
+import com.example.model.Order;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TxtOrderReader implements OrderReader{
+public class TxtOrderReader implements OrderReader {
 
     @Override
     public List<Order> readOrders(String filePath){

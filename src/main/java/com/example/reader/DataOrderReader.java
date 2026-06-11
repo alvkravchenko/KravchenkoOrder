@@ -1,4 +1,6 @@
-package com.example;
+package com.example.reader;
+
+import com.example.model.Order;
 
 import java.io.IOException;
 import java.nio.file.Files;

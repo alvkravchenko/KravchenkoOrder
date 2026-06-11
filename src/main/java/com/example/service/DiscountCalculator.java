@@ -1,7 +1,7 @@
 package com.example.service;
 
-import com.example.Order;
-import com.example.OrderWithDiscount;
+import com.example.model.Order;
+import com.example.model.OrderWithDiscount;
 
 import java.util.ArrayList;
 import java.util.List;
