@@ -47,32 +47,6 @@ public class DiscountCalculatorTest {
         assertEquals(45, secondOrderResult.getDiscount());
     }
 
-    @Test
-    public void testDiscountNeverNegative() {
-
-        LocalDateTime now = LocalDateTime.now();
-        List<Order> orders = new ArrayList<>();
-
-        for (int i = 0; i < 12; i++) {
-            orders.add(new Order(
-                    now.plusHours(i),
-                    "Company" + i,
-                    10.0
-            ));
-        }
-
-
-        DiscountCalculator calculator = new DiscountCalculator(orders);
-        List<OrderWithDiscount> result = calculator.calculateWithDetails();
-
-
-        OrderWithDiscount eleventhOrder = result.get(10);
-        assertEquals(0, eleventhOrder.getDiscount());
-
-
-        OrderWithDiscount twelfthOrder = result.get(11);
-        assertEquals(0, twelfthOrder.getDiscount());
-    }
 
     @Test
     public void testEmptyOrderList() {

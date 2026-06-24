@@ -1,9 +1,10 @@
-package com.example.service;
+package com.example.processor;
 
 import com.example.model.Order;
 import com.example.model.OrderWithDiscount;
 import com.example.reader.OrderReader;
 import com.example.reader.OrderReaderAdapter;
+import com.example.service.DiscountCalculator;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -14,14 +15,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OrderProcessor {
-
-    public void processOrders() {
-        String filePath = "discount_day.txt";
-
+    public void processOrders(String filePath) {
 
         OrderReader reader = OrderReaderAdapter.create(filePath);
-
-
         List<Order> orders = reader.readOrders(filePath);
 
 
@@ -39,6 +35,7 @@ public class OrderProcessor {
                         OrderWithDiscount::getCompanyName,
                         Collectors.summingDouble(OrderWithDiscount::getOrderWithDiscountPrice)
                 ));
+
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"))) {
             for (Map.Entry<String, Double> entry : companyTotal.entrySet()) {
